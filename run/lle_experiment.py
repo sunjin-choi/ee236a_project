@@ -2,7 +2,7 @@
 import os 
 import sys
 import inspect
-from dataclasses import dataclass
+from typing import NamedTuple
 
 currentdir = os.getcwd()
 parentdir = os.path.dirname(currentdir)
@@ -21,12 +21,17 @@ pio.renderers.default = "notebook"
 pio.templates.default = "seaborn"
 
 
-@dataclass(init=True, repr=True)
-class ExperimentConfig:
+class ExperimentConfig(NamedTuple):
     R: float
     Qi: float
     Qc: float
     Pin: float
+
+    def __str__(self):
+        return f"ExperimentConfig(R={self.R}, Qi={self.Qi}, Qc={self.Qc}, Pin={self.Pin})"
+
+    def __repr__(self):
+        return f"ExperimentConfig(R={self.R}, Qi={self.Qi}, Qc={self.Qc}, Pin={self.Pin})"
 
 
 class LLEExperiment:
