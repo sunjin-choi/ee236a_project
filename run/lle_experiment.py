@@ -100,20 +100,19 @@ class LLEExperiment:
                 R=config.R,
                 Qi=config.Qi,
                 Qc=config.Qc,
-                γ=1.55,
-                dispfile="./TestDispersion.csv"
+                γ=3.2,
+                dispfile="./RW1000_H430.csv"
         )
 
         sim = dict(
             Pin=[config.Pin],
-            f_pmp=[191e12],
-            # φ_pmp=[0],
-            # δω=[None],
-            Tscan=1e6,
-            μ_sim=[-74, 170],
-            μ_fit=[-71, 180],
-            δω_init= 2e9 * 2 * np.pi,
-            δω_end= -8e9 * 2 * np.pi,
+            f_pmp=[283e12],
+            φ_pmp=[0], 
+            δω=[None], 
+            Tscan=0.7e6,
+            μ_sim=[-220, 220],
+            δω_init= 1e9 * 2 * np.pi,
+            δω_end= -3.5e9 * 2 * np.pi,
         )
 
         solver = pyLLE.LLEsolver(sim=sim, res=res, debug=False)
